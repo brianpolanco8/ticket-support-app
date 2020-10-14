@@ -1,0 +1,30 @@
+body {
+  font-family: "Century Gothic", sans-serif;
+  --orange: #f79812;
+}
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected,
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+.header {
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.logoContainer {
+  right: 50px;
+  position: relative;
+}
+.logo {
+  width: 140px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  /* border: 1px solid red; */
+}
+.menu {
+  margin-left: auto;
+  display: flex;
+}

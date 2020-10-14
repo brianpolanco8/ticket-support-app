@@ -1,15 +1,12 @@
-import React from 'react'
+import { Layout, Menu } from "antd";
+import { Navbar } from "components/Navbar/Navbar";
+import React from "react";
+import "./Home.css";
 
-interface Props {
-
+export default function Home() {
+  return (
+    <Layout>
+      <Navbar />
+    </Layout>
+  );
 }
-
-const Home = (props: Props) => {
-    return (
-        <div>
-            Home
-        </div>
-    )
-}
-
-export default Home
