@@ -10,8 +10,8 @@ interface Props {
 const PageTitle = ({title}: Props) => {
     return (
         <div>
-    <Title>{title}</Title>
-    </div>
+            <Title>{title}</Title>
+        </div>
     )
 }
 
