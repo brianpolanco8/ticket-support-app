@@ -1,4 +1,4 @@
-import { Button, Card, Layout, Menu, Pagination, Typography } from "antd";
+import {  Card, Layout,  Pagination, Typography } from "antd";
 import { Navbar } from "components/Navbar/Navbar";
 import React, { useState } from "react";
 import { Category } from "utils";
@@ -84,11 +84,11 @@ export default function Home() {
       category: Category.Update,
     },
   ]);
-  
-  const[page, setPage] = useState(1)
+
+  const [page, setPage] = useState(1);
 
   function onPageChanged(page: number) {
-    setPage(page)
+    setPage(page);
   }
 
   return (
@@ -106,10 +106,7 @@ export default function Home() {
       <div className="ticketParentContainer">
         <div className="ticketContainer">
           {tickets
-            .slice(
-              (page - 1) * 10,
-              (page - 1) * 10 + 10
-            )
+            .slice((page - 1) * 10, (page - 1) * 10 + 10)
             .map((ticket) => (
               <Card
                 title={ticket.name}
@@ -127,7 +124,7 @@ export default function Home() {
 
       <div className="paginationContainer">
         <Pagination
-            defaultPageSize={10}
+          defaultPageSize={10}
           current={page}
           defaultCurrent={1}
           total={tickets.length}
