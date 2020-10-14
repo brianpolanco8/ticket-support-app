@@ -1,5 +1,5 @@
 import { Button, Card, Layout, Menu, Typography } from "antd";
-import { Navbar } from "components/Navbar/Navbar";
+import { Navbar } from "components";
 import React, { useState } from "react";
 import { Category } from "utils";
 import { TicketType } from "utils/types/TicketType";
