@@ -1,10 +1,10 @@
-import { Button, Card, Layout, Menu, Typography } from "antd";
+import {  Card, Layout,  Pagination, Typography } from "antd";
 import { Navbar } from "components";
+
 import React, { useState } from "react";
 import { Category } from "utils";
 import { TicketType } from "utils/types/TicketType";
 import { CategoryLabel } from "../../components/CategoryLabel/CategoryLabel";
-import { RightOutlined } from '@ant-design/icons';
 
 import "./Home.css";
 
@@ -54,7 +54,43 @@ export default function Home() {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
     },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
+      category: Category.NewFeature,
+    },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
+      category: Category.NewFeature,
+    },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
+      category: Category.Update,
+    },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
+      category: Category.Error,
+    },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
+      category: Category.Update,
+    },
   ]);
+
+  const [page, setPage] = useState(1);
+
+  function onPageChanged(page: number) {
+    setPage(page);
+  }
 
   return (
     <Layout style={{ backgroundColor: "white" }}>
@@ -70,26 +106,32 @@ export default function Home() {
 
       <div className="ticketParentContainer">
         <div className="ticketContainer">
-          {tickets.map((ticket) => (
-            <Card
-              title={ticket.name}
-              headStyle={{ fontWeight: "bold" }}
-              className="ticketCard"
-              hoverable
-              onClick={() => console.log(`Card pressed`)}
-              extra={<CategoryLabel category={ticket.category} />}
-            >
-              <p style={{ color: "#808080" }}>{ticket.description}</p>
-            </Card>
-          ))}
+          {tickets
+            .slice((page - 1) * 10, (page - 1) * 10 + 10)
+            .map((ticket) => (
+              <Card
+                title={ticket.name}
+                headStyle={{ fontWeight: "bold" }}
+                className="ticketCard"
+                hoverable
+                onClick={() => console.log(`Card pressed`)}
+                extra={<CategoryLabel category={ticket.category} />}
+              >
+                <p style={{ color: "#808080" }}>{ticket.description}</p>
+              </Card>
+            ))}
         </div>
       </div>
-      
-      <div className="buttonContainer">
-        <Button className="button" icon={<RightOutlined />}>Siguiente</Button>
-      </div>
 
-      
+      <div className="paginationContainer">
+        <Pagination
+          defaultPageSize={10}
+          current={page}
+          defaultCurrent={1}
+          total={tickets.length}
+          onChange={(page) => onPageChanged(page)}
+        />
+      </div>
     </Layout>
   );
 }
