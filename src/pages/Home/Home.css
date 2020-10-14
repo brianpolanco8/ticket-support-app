@@ -24,9 +24,6 @@ body {
     border-color: var(--orange);
     background-color: var(--orange);
 }
-.buttonContainer{
-    margin: 0px auto 50px auto;
-}
 .errorTicket {
   background-color: var(--redOpaque);
   color: var(--red);
@@ -44,6 +41,9 @@ body {
   position: absolute;
   width: 100vw;
   top: 65px;
+}
+.paginationContainer{
+    margin: 0px auto 50px auto;
 }
 .ticketContainer {
   width: 605px;
