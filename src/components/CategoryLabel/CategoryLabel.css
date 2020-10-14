@@ -1,0 +1,51 @@
+body {
+  font-family: "Century Gothic", sans-serif;
+  --orange: #f79812;
+  --orangeOpaque: rgba(247, 152, 18, 0.85);
+  --red: #ff0000;
+  --redOpaque: rgba(235, 87, 87, 0.35);
+  --green: #6fcf97;
+  --greenOpaque: rgba(33, 150, 83, 0.2);
+  --blue: #2d9cdb;
+  --blueOpaque: rgba(47, 128, 237, 0.35);
+}
+
+.error {
+  width: 50px;
+  background-color: var(--redOpaque);
+  border: 1px solid red;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.errorLabel {
+  color: var(--red);
+  font-weight: bold;
+}
+.newFeature {
+  width: 160px;
+  background-color: var(--blueOpaque);
+  border: 1px solid var(--blue);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.newFeatureLabel {
+  color: var(--blue);
+  font-weight: bold;
+}
+.update {
+  width: 110px;
+  background-color: var(--greenOpaque);
+  border: 1px solid var(--green);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.updateLabel {
+  color: var(--green);
+  font-weight: bold;
+}

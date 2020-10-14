@@ -1,8 +1,9 @@
-import { Button, Layout, Menu } from "antd";
+import { Button, Layout, Menu, Typography } from "antd";
 import React from "react";
 import "./Navbar.css";
 
 const { Header } = Layout;
+const { Link } = Typography;
 
 export function Navbar() {
   return (
