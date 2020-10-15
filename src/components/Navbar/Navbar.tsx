@@ -13,7 +13,7 @@ export function Navbar() {
           <img
             className="logo"
             src={require("../../assets/images/kitao-logo.png")}
-          />
+            alt={"Not loaded..."}/>
         </div>
         <Menu theme="light" mode="horizontal" className="menu">
           <Menu.Item key="home">
