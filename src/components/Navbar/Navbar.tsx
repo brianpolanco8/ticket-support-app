@@ -15,12 +15,18 @@ export function Navbar() {
             src={require("../../assets/images/kitao-logo.png")}
           />
         </div>
-        <Menu theme="light" mode='horizontal' className="menu">
-            <Menu.Item key="home">Inicio</Menu.Item>
-            <Menu.Item key="changelog">Registro</Menu.Item>
-            <Menu.Item key="createTicket">Crear ticket</Menu.Item>
-            <Menu.Item key="support">Soporte</Menu.Item>
-            <Menu.Item key="login">Iniciar Sesión</Menu.Item>
+        <Menu theme="light" mode="horizontal" className="menu">
+          <Menu.Item key="home">
+            <Link href="/">Inicio</Link>
+          </Menu.Item>
+          <Menu.Item key="changelog">
+            <Link href="/registro"  color=" #f79812">
+              Registro
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="createTicket">Crear ticket</Menu.Item>
+          <Menu.Item key="support">Soporte</Menu.Item>
+          <Menu.Item key="login">Iniciar Sesión</Menu.Item>
         </Menu>
       </Header>
     </Layout>

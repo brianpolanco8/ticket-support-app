@@ -8,11 +8,16 @@ body {
   border-bottom-color: var(--orange);
 }
 
+.ant-menu-horizontal > .ant-menu-item a:hover {
+  color: var(--orange);
+}
+
 .header {
   background-color: white;
   display: flex;
   align-items: center;
 }
+
 .logoContainer {
   right: 50px;
   position: relative;

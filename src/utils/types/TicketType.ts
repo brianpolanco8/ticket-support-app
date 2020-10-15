@@ -4,6 +4,7 @@ export type TicketType ={
   name: string;
   description: string;
   category: TicketCategory;
+  completionDate: Date;
 }
 
 export type TicketCategory =
