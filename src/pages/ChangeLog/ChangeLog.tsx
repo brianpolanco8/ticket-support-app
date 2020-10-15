@@ -1,123 +1,126 @@
-import {  Card, Layout,  Pagination, Typography } from "antd";
+import { Card, Layout, Pagination, Typography } from "antd";
 import { Navbar } from "components";
-
 import React, { useState } from "react";
 import { Category } from "utils";
 import { TicketType } from "utils/types/TicketType";
 import { CategoryLabel } from "../../components/CategoryLabel/CategoryLabel";
 
-import "./Home.css";
+import "./ChangeLog.css";
 
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 
-interface Props {
-  user: firebase.firestore.DocumentData | undefined;
-  setUser: React.Dispatch<firebase.firestore.DocumentData>;
-}
-
-export default function Home({user,setUser}: Props) {
-  
+export default function ChangeLog() {
   const [tickets, setTickets] = useState<TicketType[]>([
     {
       name: "Lorem ipsum dolor sit amet",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
-      completionDate: new Date("October 12, 2020")
+      completionDate: new Date("October 12, 2020"),
+    },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Praesent non elementum erat. Phasellus varius enim eget tellus accumsan facilisis. Donec id consequat dui, non elementum ex. Aliquam cursus diam et urna sodales rhoncus. Nullam varius maximus risus, ac mollis ex. ",
+      category: Category.NewFeature,
+      completionDate: new Date("October 12, 2020"),
+    },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Quisque iaculis leo id malesuada interdum. Morbi in malesuada odio, eu bibendum arcu. Nunc sed massa vitae orci commodo hendrerit sed sed nibh.",
+      category: Category.Error,
+      completionDate: new Date("October 12, 2020"),
     },
     {
       name: "Lorem ipsum dolor sit amet",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
+      category: Category.Update,
+      completionDate: new Date("October 12, 2020"),
+    },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Aliquam vel quam dignissim elit fermentum gravida vitae ut nunc. Integer rhoncus sem ut leo mattis imperdiet.",
       category: Category.NewFeature,
-      completionDate: new Date("October 12, 2020")
+      completionDate: new Date("October 12, 2020"),
+    },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
+      category: Category.Update,
+      completionDate: new Date("October 12, 2020"),
     },
     {
       name: "Lorem ipsum dolor sit amet",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
-      completionDate: new Date("October 12, 2020")
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      description:
-        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
-      category: Category.Update,
-      completionDate: new Date("October 12, 2020")
+      completionDate: new Date("October 12, 2020"),
     },
     {
       name: "Lorem ipsum dolor sit amet",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.NewFeature,
-      completionDate: new Date("October 12, 2020")
+      completionDate: new Date("October 12, 2020"),
+    },
+    {
+      name: "Lorem ipsum dolor sit amet",
+      description:
+        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
+      category: Category.NewFeature,
+      completionDate: new Date("October 12, 2020"),
     },
     {
       name: "Lorem ipsum dolor sit amet",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
-      completionDate: new Date("October 12, 2020")
+      completionDate: new Date("October 12, 2020"),
     },
     {
       name: "Lorem ipsum dolor sit amet",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
-      completionDate: new Date("October 12, 2020")
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      description:
-        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
-      category: Category.NewFeature,
-      completionDate: new Date("October 12, 2020")
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      description:
-        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
-      category: Category.NewFeature,
-      completionDate: new Date("October 12, 2020")
+      completionDate: new Date("October 12, 2020"),
     },
     {
       name: "Lorem ipsum dolor sit amet",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
-      completionDate: new Date("October 12, 2020")
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      description:
-        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
-      category: Category.Error,
-      completionDate: new Date("October 12, 2020")
-    },
-    {
-      name: "Lorem ipsum dolor sit amet",
-      description:
-        "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
-      category: Category.Update,
-      completionDate: new Date("October 12, 2020")
+      completionDate: new Date("October 12, 2020"),
     },
   ]);
 
   const [page, setPage] = useState(1);
 
+  let dateFormatter = new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format;
+
   function onPageChanged(page: number) {
     setPage(page);
   }
 
+  function parseTicketDate(ticket: TicketType): string {
+    return dateFormatter(ticket.completionDate);
+  }
+
   return (
     <Layout style={{ backgroundColor: "white" }}>
-      <Navbar user={user} setUser={setUser}/>
+      <Navbar />
       <div className="pageTitleContainer">
         <div>
-          <Title style={{ textAlign: "center" }}>Kitao - Soporte</Title>
+          <Title style={{ textAlign: "center" }}>Registro de cambios</Title>
           <Title level={4} style={{ fontWeight: "normal" }}>
-            Actualizaciones, características y reparaciones en progreso
+            Actualizaciones, características y correcciones terminadas
           </Title>
         </div>
       </div>
@@ -135,7 +138,12 @@ export default function Home({user,setUser}: Props) {
                 onClick={() => console.log(`Card pressed`)}
                 extra={<CategoryLabel category={ticket.category} />}
               >
-                <p style={{ color: "#808080" }}>{ticket.description}</p>
+                <Paragraph ellipsis={{ rows: 2 }} className="ticketDescription">
+                  {ticket.description}
+                </Paragraph>
+                <Paragraph className="ticketDate">
+                  {parseTicketDate(ticket)}
+                </Paragraph>
               </Card>
             ))}
         </div>

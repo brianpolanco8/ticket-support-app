@@ -1,0 +1,63 @@
+body {
+  font-family: "Century Gothic", sans-serif;
+  --orange: #f79812;
+  --orangeOpaque: rgba(247, 152, 18, 0.85);
+  --red: #ff0000;
+  --redOpaque: rgba(235, 87, 87, 0.35);
+  --green: #6fcf97;
+  --greenOpaque: rgba(33, 150, 83, 0.2);
+  --blue: #2d9cdb;
+  --blueOpaque: rgba(47, 128, 237, 0.35);
+}
+.button{
+    background-color: var(--orangeOpaque);
+    color: white;
+    border-radius: 5px;
+}
+.button:hover{
+    color: white;
+    border-color: var(--orange);
+    background-color: var(--orange);
+}
+.button:focus{
+    color: white;
+    border-color: var(--orange);
+    background-color: var(--orange);
+}
+.errorTicket {
+  background-color: var(--redOpaque);
+  color: var(--red);
+}
+
+.layout {
+  background-color: white;
+}
+.pageTitleContainer {
+  background-color: var(--orangeOpaque);
+  height: 347px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100vw;
+  top: 65px;
+}
+.paginationContainer{
+    margin: 0px auto 50px auto;
+}
+.ticketContainer {
+  width: 605px;
+}
+.ticketParentContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 250px;
+  margin-bottom: 50px;
+}
+.ticketCard {
+  width: 600px;
+  height: 168px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 10px #e6e6e6;
+}
