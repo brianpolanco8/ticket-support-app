@@ -1,0 +1,10 @@
+.pageTitleContainer {
+    background-color: var(--orangeOpaque);
+    height: 347px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100vw;
+    top: 65px;
+  }

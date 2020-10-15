@@ -2,9 +2,13 @@ body {
   font-family: "Century Gothic", sans-serif;
   --orange: #f79812;
 }
+.activeMenuItem{
+  color: var(--orange);
+  border-bottom: 10px solid var(--orange);
+}
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected,
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item:hover {
-  color: var(--orange);
+  color: var(--orange); 
   border-bottom-color: var(--orange);
 }
 
