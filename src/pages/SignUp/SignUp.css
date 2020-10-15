@@ -1,17 +1,3 @@
-body {
-  font-family: "Century Gothic", sans-serif;
-  --orange: #f79812;
-  --orangeOpaque: rgba(247, 152, 18, 0.85);
-  --red: #ff0000;
-  --redOpaque: rgba(235, 87, 87, 0.35);
-  --green: #6fcf97;
-  --greenOpaque: rgba(33, 150, 83, 0.2);
-  --blue: #2d9cdb;
-  --blueOpaque: rgba(47, 128, 237, 0.35);
-  --darkBlue: #595959;
-  --gray: rgba(130, 130, 130, 0.3);
-}
-
 .container {
   display: flex;
   align-items: center;

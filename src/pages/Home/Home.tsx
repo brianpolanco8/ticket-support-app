@@ -10,7 +10,13 @@ import "./Home.css";
 
 const { Title } = Typography;
 
-export default function Home() {
+interface Props {
+  user: firebase.firestore.DocumentData | undefined;
+  setUser: React.Dispatch<firebase.firestore.DocumentData>;
+}
+
+export default function Home({user,setUser}: Props) {
+  
   const [tickets, setTickets] = useState<TicketType[]>([
     {
       name: "Lorem ipsum dolor sit amet",
@@ -94,7 +100,7 @@ export default function Home() {
 
   return (
     <Layout style={{ backgroundColor: "white" }}>
-      <Navbar />
+      <Navbar user={user} setUser={setUser}/>
       <div className="pageTitleContainer">
         <div>
           <Title style={{ textAlign: "center" }}>Kitao - Soporte</Title>

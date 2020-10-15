@@ -1,17 +1,28 @@
-import { Button, Layout, Menu, Typography } from "antd";
+import {  Layout, Menu, Typography } from "antd";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./Navbar.css";
 
 const { Header } = Layout;
-const { Link } = Typography;
 
+interface Props {
+  user?: firebase.firestore.DocumentData | undefined;
+  setUser?: React.Dispatch<firebase.firestore.DocumentData>;
+}
 
-const Navbar = ({}) => {
+const Navbar = ({user,setUser}: Props) => {
   const history = useHistory();
   const handleOnClick = (route: string) => {
-    history.push(route);
+    if(route === '/logout') {
+      history.push('/')
+      window.location.reload()
+    } else {
+      history.push(route);
+    }
+    
   }
+
+  console.log('user', user)
   return (
     <Layout>
       <Header className="header">
@@ -23,11 +34,21 @@ const Navbar = ({}) => {
           />
         </div>
         <Menu theme="light" mode='horizontal' className="menu">
-            <Menu.Item onClick={() => handleOnClick('home')} key="home">Inicio</Menu.Item>
-            <Menu.Item onClick={() => handleOnClick('signup')} key="changelog">Registro</Menu.Item>
+            <Menu.Item onClick={() => handleOnClick('/')} key="home">Inicio</Menu.Item>
             <Menu.Item onClick={() => handleOnClick('createTicket')} key="createTicket">Crear ticket</Menu.Item>
             <Menu.Item onClick={() => handleOnClick('support')} key="support">Soporte</Menu.Item>
+            {user ? (
+              <>
+            <Menu.Item onClick={() => handleOnClick('/logout')} key="changelog">Cerrar sesión</Menu.Item>  
+            <Menu.Item onClick={() => handleOnClick('/')} key="changelog" className="navbar__username">{user.firstname} {user.lastname}</Menu.Item>  
+            </>
+            ): (
+              <>
+            <Menu.Item onClick={() => handleOnClick('signup')} key="changelog">Registro</Menu.Item>
             <Menu.Item onClick={() => handleOnClick('login')} key="login">Iniciar Sesión</Menu.Item>
+            </>
+            )}
+            
         </Menu>
       </Header>
     </Layout>
