@@ -14,17 +14,24 @@ import { Navbar } from "components/Navbar/Navbar";
 import React, { useState } from "react";
 import { Category } from "utils";
 import { TicketCategory, TicketType } from "utils/types/TicketType";
+import { firestore } from "../../services/firebase";
 
 import "./CreateTicket.css";
 
 const { Title, Paragraph } = Typography;
 const { TextArea } = Input;
 
+interface UserTicketType {
+  id: string;
+  displayName: string;
+  email: string;
+}
+
 interface CreateTicketProps {
   name: string;
-  categoryCascader: string[]; //The Cascader component requires an array as value.
   category: string;
   description: string;
+  client: UserTicketType;
 }
 
 interface Props {
@@ -48,22 +55,33 @@ export default function CreateTicket({ setUser, user }: Props) {
     },
   ];
 
-  const [state, setState] = useState<CreateTicketProps>({
+  const [ticket, setTicket] = useState<CreateTicketProps>({
     name: "",
-    categoryCascader: [""],
     category: "",
     description: "",
+    client: {
+      displayName: user ? user.displayName : "",
+      email: user ? user.email : "",
+      id: user ? user.id : "",
+    },
   });
 
+  const[categoryCascader, setCategoryCascader] = useState<string[]>([])
+
   function onCategoryChanged(value: CascaderValueType) {
-    setState({
-      ...state,
-      categoryCascader: [value.toString()],
+    setTicket({
+      ...ticket,
       category: value.toString(),
     });
+    setCategoryCascader([value.toString()])
   }
 
-  // function
+  function createTicket() {
+    firestore()
+      .collection("tickets")
+      .add(ticket)
+      .then(() => console.log("New ticket added"));
+  }
 
   return (
     <Layout style={{ backgroundColor: "white" }}>
@@ -84,8 +102,10 @@ export default function CreateTicket({ setUser, user }: Props) {
                 <Title level={4}>Nombre</Title>
                 <Input
                   className="inputName"
-                  value={state.name}
-                  onChange={(e) => setState({ ...state, name: e.target.value })}
+                  value={ticket.name}
+                  onChange={(e) =>
+                    setTicket({ ...ticket, name: e.target.value })
+                  }
                   placeholder="Nombre de la característica"
                 />
               </Row>
@@ -93,9 +113,9 @@ export default function CreateTicket({ setUser, user }: Props) {
               <Row className="descriptionRow">
                 <Title level={4}>Descripción</Title>
                 <TextArea
-                  value={state.description}
+                  value={ticket.description}
                   onChange={(e) =>
-                    setState({ ...state, description: e.target.value })
+                    setTicket({ ...ticket, description: e.target.value })
                   }
                   className="description"
                   rows={3}
@@ -108,7 +128,7 @@ export default function CreateTicket({ setUser, user }: Props) {
               <Cascader
                 style={{ backgroundColor: " #f0f0f0" }}
                 options={categoryOptions}
-                value={state.categoryCascader}
+                value={categoryCascader}
                 onChange={onCategoryChanged}
                 placeholder="Seleccione categoría"
               />
@@ -117,7 +137,9 @@ export default function CreateTicket({ setUser, user }: Props) {
         </Col>
         <Row align="bottom" justify="end">
           <Col span={24}>
-            <Button className="button">Crear ticket</Button>
+            <Button className="button" onClick={() => createTicket()}>
+              Crear ticket
+            </Button>
           </Col>
         </Row>
       </Row>

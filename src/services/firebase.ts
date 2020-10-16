@@ -25,11 +25,12 @@ export const generateUserDocument = async (user: firebase.User | null, additiona
 
     if (!snapshot.exists) {
         const { email, displayName, photoURL } = user;
+        const userType = "client"
         try {
             await userRef.set({
                 displayName,
                 email,
-                photoURL,
+                userType,
                 ...additionalData
             });
         } catch (error) {

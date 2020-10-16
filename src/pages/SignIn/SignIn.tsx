@@ -25,8 +25,7 @@ const SignIn = ({user, setUser}: Props) => {
             );
             const profileRef = firestore().doc(`users/${response.user?.uid}`);
             const profile = await profileRef.get();
-        
-            setUser({...response, ...profile.data()})
+            setUser({id: response.user?.uid, ...profile.data()})
             console.log("data", profile.data());
             history.push('/')
             

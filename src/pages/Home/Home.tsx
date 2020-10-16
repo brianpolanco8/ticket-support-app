@@ -110,6 +110,8 @@ export default function Home({user,setUser}: Props) {
     setPage(page);
   }
 
+  // function 
+
   return (
     <Layout style={{ backgroundColor: "white" }}>
       <Navbar user={user} setUser={setUser}/>
@@ -135,6 +137,7 @@ export default function Home({user,setUser}: Props) {
                 onClick={() => console.log(`Card pressed`)}
                 extra={<CategoryLabel category={ticket.category} />}
               >
+                
                 <p style={{ color: "#808080" }}>{ticket.description}</p>
               </Card>
             ))}
