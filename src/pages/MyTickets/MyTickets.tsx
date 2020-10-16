@@ -21,7 +21,6 @@ export default function MyTickets({ user, setUser }: Props) {
 
   useEffect(() => {
     let userTickets: any[] = [];
-    console.log(user ? user.id : "nada");
     firestore()
       .collection("tickets")
       .where("client.id", "==", user ? user.id : "")
@@ -36,8 +35,6 @@ export default function MyTickets({ user, setUser }: Props) {
   function onPageChanged(page: number) {
     setPage(page);
   }
-
-  // function
 
   return (
     <Layout style={{ backgroundColor: "white" }}>
