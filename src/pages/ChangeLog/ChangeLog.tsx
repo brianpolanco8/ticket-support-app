@@ -120,7 +120,7 @@ export default function ChangeLog({ user, setUser }: Props) {
 
   return (
     <Layout style={{ backgroundColor: "white" }}>
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <div className="pageTitleContainer">
         <div>
           <Title style={{ textAlign: "center" }}>Registro de cambios</Title>

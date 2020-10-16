@@ -36,3 +36,15 @@
   justify-content: center;
   width: 100vw;
 }
+
+.signInWarningContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.signInButton{
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px var(--orange);
+    margin: auto;
+    color: var(--orange);
+}
