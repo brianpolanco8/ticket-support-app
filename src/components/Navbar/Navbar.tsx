@@ -50,6 +50,12 @@ export function Navbar({ setUser, user }: Props) {
           >
             Soporte
           </Menu.Item>
+          <Menu.Item
+            onClick={() => handleOnClick(Routes.ChangeLog)}
+            key="changeLog"
+          >
+            Registro de cambios
+          </Menu.Item>
           {user ? (
             <>
               <Menu.Item
@@ -60,7 +66,7 @@ export function Navbar({ setUser, user }: Props) {
               </Menu.Item>
               <Menu.Item
                 onClick={() => handleOnClick(Routes.Home)}
-                key="changelog"
+                key="userHome"
                 className="navbar__username"
               >
                 {user.firstname} {user.lastname}
@@ -70,9 +76,9 @@ export function Navbar({ setUser, user }: Props) {
             <>
               <Menu.Item
                 onClick={() => handleOnClick(Routes.SignUp)}
-                key="changelog"
+                key="signUp"
               >
-                Registro
+                Registrarse
               </Menu.Item>
               <Menu.Item
                 onClick={() => handleOnClick(Routes.SignIn)}
