@@ -35,28 +35,31 @@ export function Navbar({ setUser, user }: Props) {
           />
         </div>
         <Menu theme="light" mode="horizontal" className="menu">
-          <Menu.Item onClick={() => handleOnClick("/")} key="home">
+          <Menu.Item onClick={() => handleOnClick(Routes.Home)} key="home">
             Inicio
           </Menu.Item>
           <Menu.Item
-            onClick={() => handleOnClick("createTicket")}
+            onClick={() => handleOnClick(Routes.CreateTicket)}
             key="createTicket"
           >
             Crear ticket
           </Menu.Item>
-          <Menu.Item onClick={() => handleOnClick("support")} key="support">
+          <Menu.Item
+            onClick={() => handleOnClick(Routes.Support)}
+            key="support"
+          >
             Soporte
           </Menu.Item>
           {user ? (
             <>
               <Menu.Item
-                onClick={() => handleOnClick("/logout")}
-                key="changelog"
+                onClick={() => handleOnClick(Routes.Logout)}
+                key="logout"
               >
                 Cerrar sesión
               </Menu.Item>
               <Menu.Item
-                onClick={() => handleOnClick("/")}
+                onClick={() => handleOnClick(Routes.Home)}
                 key="changelog"
                 className="navbar__username"
               >
@@ -66,12 +69,15 @@ export function Navbar({ setUser, user }: Props) {
           ) : (
             <>
               <Menu.Item
-                onClick={() => handleOnClick("signup")}
+                onClick={() => handleOnClick(Routes.SignUp)}
                 key="changelog"
               >
                 Registro
               </Menu.Item>
-              <Menu.Item onClick={() => handleOnClick("login")} key="login">
+              <Menu.Item
+                onClick={() => handleOnClick(Routes.SignIn)}
+                key="login"
+              >
                 Iniciar Sesión
               </Menu.Item>
             </>
