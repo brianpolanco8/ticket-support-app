@@ -1,7 +1,8 @@
-import {  Layout, Menu, Typography } from "antd";
+import { Layout, Menu, Typography } from "antd";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./Navbar.css";
+import { Routes } from "../../utils";
 
 const { Header } = Layout;
 
@@ -10,19 +11,19 @@ interface Props {
   setUser?: React.Dispatch<firebase.firestore.DocumentData>;
 }
 
-const Navbar = ({user,setUser}: Props) => {
+export function Navbar({ setUser, user }: Props) {
   const history = useHistory();
+  const curURL = history.location.pathname;
+
   const handleOnClick = (route: string) => {
-    if(route === '/logout') {
-      history.push('/')
-      window.location.reload()
+    if (route === "/logout") {
+      history.push("/");
+      window.location.reload();
     } else {
       history.push(route);
     }
-    
-  }
+  };
 
-  console.log('user', user)
   return (
     <Layout>
       <Header className="header">
@@ -33,22 +34,48 @@ const Navbar = ({user,setUser}: Props) => {
             src={require("../../assets/images/kitao-logo.png")}
           />
         </div>
-        <Menu theme="light" mode='horizontal' className="menu">
-            <Menu.Item onClick={() => handleOnClick('/')} key="home">Inicio</Menu.Item>
-            <Menu.Item onClick={() => handleOnClick('createTicket')} key="createTicket">Crear ticket</Menu.Item>
-            <Menu.Item onClick={() => handleOnClick('support')} key="support">Soporte</Menu.Item>
-            {user ? (
-              <>
-            <Menu.Item onClick={() => handleOnClick('/logout')} key="changelog">Cerrar sesión</Menu.Item>  
-            <Menu.Item onClick={() => handleOnClick('/')} key="changelog" className="navbar__username">{user.firstname} {user.lastname}</Menu.Item>  
+        <Menu theme="light" mode="horizontal" className="menu">
+          <Menu.Item onClick={() => handleOnClick("/")} key="home">
+            Inicio
+          </Menu.Item>
+          <Menu.Item
+            onClick={() => handleOnClick("createTicket")}
+            key="createTicket"
+          >
+            Crear ticket
+          </Menu.Item>
+          <Menu.Item onClick={() => handleOnClick("support")} key="support">
+            Soporte
+          </Menu.Item>
+          {user ? (
+            <>
+              <Menu.Item
+                onClick={() => handleOnClick("/logout")}
+                key="changelog"
+              >
+                Cerrar sesión
+              </Menu.Item>
+              <Menu.Item
+                onClick={() => handleOnClick("/")}
+                key="changelog"
+                className="navbar__username"
+              >
+                {user.firstname} {user.lastname}
+              </Menu.Item>
             </>
-            ): (
-              <>
-            <Menu.Item onClick={() => handleOnClick('signup')} key="changelog">Registro</Menu.Item>
-            <Menu.Item onClick={() => handleOnClick('login')} key="login">Iniciar Sesión</Menu.Item>
+          ) : (
+            <>
+              <Menu.Item
+                onClick={() => handleOnClick("signup")}
+                key="changelog"
+              >
+                Registro
+              </Menu.Item>
+              <Menu.Item onClick={() => handleOnClick("login")} key="login">
+                Iniciar Sesión
+              </Menu.Item>
             </>
-            )}
-            
+          )}
         </Menu>
       </Header>
     </Layout>
@@ -56,4 +83,3 @@ const Navbar = ({user,setUser}: Props) => {
 }
 
 export default Navbar;
-

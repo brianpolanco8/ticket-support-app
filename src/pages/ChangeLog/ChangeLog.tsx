@@ -9,7 +9,12 @@ import "./ChangeLog.css";
 
 const { Title, Paragraph } = Typography;
 
-export default function ChangeLog() {
+interface Props {
+  user: firebase.firestore.DocumentData | undefined;
+  setUser: React.Dispatch<firebase.firestore.DocumentData>;
+}
+
+export default function ChangeLog({ user, setUser }: Props) {
   const [tickets, setTickets] = useState<TicketType[]>([
     {
       name: "Lorem ipsum dolor sit amet",
