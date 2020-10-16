@@ -39,6 +39,7 @@ export function Navbar({ setUser, user }: Props) {
           <Menu.Item onClick={() => handleOnClick(Routes.Home)} key="home">
             Inicio
           </Menu.Item>
+          
           <SubMenu title="Tickets">
             <Menu.Item
               onClick={() => handleOnClick(Routes.CreateTicket)}
@@ -46,6 +47,14 @@ export function Navbar({ setUser, user }: Props) {
             >
               Crear ticket
             </Menu.Item>
+            
+            <Menu.Item
+              onClick={() => handleOnClick(Routes.MyTickets)}
+              key="myTickets"
+            >
+              Mis Tickets
+            </Menu.Item>
+            
             <Menu.Item
               onClick={() => handleOnClick(Routes.ChangeLog)}
               key="changeLog"
@@ -53,6 +62,7 @@ export function Navbar({ setUser, user }: Props) {
               Registro de cambios
             </Menu.Item>
           </SubMenu>
+          
           <Menu.Item
             onClick={() => handleOnClick(Routes.Support)}
             key="support"

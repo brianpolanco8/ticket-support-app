@@ -5,3 +5,4 @@ export const SignIn = "/login";
 export const SignUp = "/signup";
 export const Support = "/support";
 export const Logout = "/logout";
+export const MyTickets = "/mis-tickets"

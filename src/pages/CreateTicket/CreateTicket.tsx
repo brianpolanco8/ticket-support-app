@@ -7,6 +7,7 @@ import {
   Layout,
   Pagination,
   Row,
+  message,
   Typography,
 } from "antd";
 import { CascaderValueType } from "antd/lib/cascader";
@@ -15,18 +16,13 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Category, Routes } from "utils";
 import { TicketCategory, TicketType } from "utils/types/TicketType";
+import { UserTicketType } from "utils/types/UserTicketType";
 import { firestore } from "../../services/firebase";
 
 import "./CreateTicket.css";
 
 const { Title, Paragraph } = Typography;
 const { TextArea } = Input;
-
-interface UserTicketType {
-  id: string;
-  displayName: string;
-  email: string;
-}
 
 interface CreateTicketProps {
   name: string;
@@ -83,12 +79,18 @@ export default function CreateTicket({ setUser, user }: Props) {
     firestore()
       .collection("tickets")
       .add(ticket)
-      .then(() => console.log("New ticket added"));
+      .then(() => {
+        message.success("Nuevo ticket creado");
+        history.push(Routes.MyTickets)
+      })
+      .catch((reason) => {
+        message.error("Hubo un error");
+      });
   }
 
   return (
     <Layout style={{ backgroundColor: "white" }}>
-      <Navbar user={user} setUser={setUser}/>
+      <Navbar user={user} setUser={setUser} />
       <div className="pageTitleContainer">
         {user ? (
           <div>
@@ -98,7 +100,7 @@ export default function CreateTicket({ setUser, user }: Props) {
             </Title>
           </div>
         ) : (
-          <div className="signInWarningContainer" >
+          <div className="signInWarningContainer">
             <Title style={{ textAlign: "center" }}>
               Debes haber iniciado sesión para hacer tickets.
             </Title>
