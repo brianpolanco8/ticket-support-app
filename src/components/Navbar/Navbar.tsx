@@ -3,6 +3,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import "./Navbar.css";
 import { Routes } from "../../utils";
+import SubMenu from "antd/lib/menu/SubMenu";
 
 const { Header } = Layout;
 
@@ -38,24 +39,27 @@ export function Navbar({ setUser, user }: Props) {
           <Menu.Item onClick={() => handleOnClick(Routes.Home)} key="home">
             Inicio
           </Menu.Item>
-          <Menu.Item
-            onClick={() => handleOnClick(Routes.CreateTicket)}
-            key="createTicket"
-          >
-            Crear ticket
-          </Menu.Item>
+          <SubMenu title="Tickets">
+            <Menu.Item
+              onClick={() => handleOnClick(Routes.CreateTicket)}
+              key="createTicket"
+            >
+              Crear ticket
+            </Menu.Item>
+            <Menu.Item
+              onClick={() => handleOnClick(Routes.ChangeLog)}
+              key="changeLog"
+            >
+              Registro de cambios
+            </Menu.Item>
+          </SubMenu>
           <Menu.Item
             onClick={() => handleOnClick(Routes.Support)}
             key="support"
           >
             Soporte
           </Menu.Item>
-          <Menu.Item
-            onClick={() => handleOnClick(Routes.ChangeLog)}
-            key="changeLog"
-          >
-            Registro de cambios
-          </Menu.Item>
+
           {user ? (
             <>
               <Menu.Item

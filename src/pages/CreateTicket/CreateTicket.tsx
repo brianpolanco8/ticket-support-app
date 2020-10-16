@@ -63,6 +63,8 @@ export default function CreateTicket({ setUser, user }: Props) {
     });
   }
 
+  // function
+
   return (
     <Layout style={{ backgroundColor: "white" }}>
       <Navbar />
