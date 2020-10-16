@@ -1,18 +1,48 @@
-import React from "react";
+import { Routes } from "./utils";
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { SignUp, SignIn, Home, ChangeLog, CreateTicket } from "pages";
-import { Routes } from "./utils";
 
 const App = () => {
+  const [user, setUser] = useState<firebase.firestore.DocumentData>();
+
   return (
     <Router>
       <Switch>
-        <Route exact path={Routes.Home} component={Home} />
-        <Route exact path={Routes.ChangeLog} component={ChangeLog} />
-        <Route exact path={Routes.SignIn} component={SignIn} />
-        <Route exact path={Routes.SignUp} component={SignUp} />
-        <Route exact path={Routes.CreateTicket} component={CreateTicket} />
+        <Route
+          exact
+          path={Routes.Home}
+          render={(props) => <Home user={user} setUser={setUser} />}
+        />
+        <Route
+          exact
+          path={Routes.SignIn}
+          render={(props) => (
+            <SignIn user={user} setUser={setUser} {...props} />
+          )}
+        />
+        <Route
+          exact
+          path={Routes.SignUp}
+          render={(props) => (
+            <SignUp user={user} setUser={setUser} {...props} />
+          )}
+        />
+        <Route
+          exact
+          path={Routes.ChangeLog}
+          render={(props) => (
+            <ChangeLog user={user} setUser={setUser} {...props} />
+          )}
+        />
+        <Route
+          exact
+          path={Routes.CreateTicket}
+          render={(props) => (
+            <CreateTicket user={user} setUser={setUser} {...props} />
+          )}
+        />
       </Switch>
     </Router>
   );

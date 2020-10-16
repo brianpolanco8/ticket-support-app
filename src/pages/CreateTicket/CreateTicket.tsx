@@ -27,7 +27,12 @@ interface CreateTicketProps {
   description: string;
 }
 
-export default function CreateTicket() {
+interface Props {
+  user: firebase.firestore.DocumentData | undefined;
+  setUser: React.Dispatch<firebase.firestore.DocumentData>;
+}
+
+export default function CreateTicket({ setUser, user }: Props) {
   const categoryOptions = [
     {
       value: Category.NewFeature,
