@@ -15,7 +15,7 @@ import { Navbar } from "components/Navbar/Navbar";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Category, Routes } from "utils";
-import { TicketCategory, TicketType } from "utils/types/TicketType";
+import { InProgress, TicketCategory, TicketType } from "utils/types/TicketType";
 import { UserTicketType } from "utils/types/UserTicketType";
 import { firestore } from "../../services/firebase";
 
@@ -79,7 +79,7 @@ export default function CreateTicket({ setUser, user }: Props) {
   function createTicket() {
     firestore()
       .collection("tickets")
-      .add(ticket)
+      .add({...ticket, state: InProgress})
       .then(() => {
         message.success("Nuevo ticket creado");
         history.push(Routes.MyTickets)
