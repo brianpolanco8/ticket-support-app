@@ -9,20 +9,20 @@ body {
   --blue: #2d9cdb;
   --blueOpaque: rgba(47, 128, 237, 0.35);
 }
-.button{
-    background-color: var(--orangeOpaque);
-    color: white;
-    border-radius: 5px;
+.button {
+  background-color: var(--orangeOpaque);
+  color: white;
+  border-radius: 5px;
 }
-.button:hover{
-    color: white;
-    border-color: var(--orange);
-    background-color: var(--orange);
+.button:hover {
+  color: white;
+  border-color: var(--orange);
+  background-color: var(--orange);
 }
-.button:focus{
-    color: white;
-    border-color: var(--orange);
-    background-color: var(--orange);
+.button:focus {
+  color: white;
+  border-color: var(--orange);
+  background-color: var(--orange);
 }
 .errorTicket {
   background-color: var(--redOpaque);
@@ -42,8 +42,8 @@ body {
   width: 100vw;
   top: 65px;
 }
-.paginationContainer{
-    margin: 0px auto 50px auto;
+.paginationContainer {
+  margin: 0px auto 50px auto;
 }
 .ticketContainer {
   width: 605px;
