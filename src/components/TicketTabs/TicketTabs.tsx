@@ -1,5 +1,6 @@
 import React from "react";
 import { Tabs } from "antd";
+import "./TicketTabs.css"
 
 const { TabPane } = Tabs;
 
