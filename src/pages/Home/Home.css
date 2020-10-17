@@ -9,20 +9,20 @@ body {
   --blue: #2d9cdb;
   --blueOpaque: rgba(47, 128, 237, 0.35);
 }
-.button{
-    background-color: var(--orangeOpaque);
-    color: white;
-    border-radius: 5px;
+.button {
+  background-color: var(--orangeOpaque);
+  color: white;
+  border-radius: 5px;
 }
-.button:hover{
-    color: white;
-    border-color: var(--orange);
-    background-color: var(--orange);
+.button:hover {
+  color: white;
+  border-color: var(--orange);
+  background-color: var(--orange);
 }
-.button:focus{
-    color: white;
-    border-color: var(--orange);
-    background-color: var(--orange);
+.button:focus {
+  color: white;
+  border-color: var(--orange);
+  background-color: var(--orange);
 }
 .errorTicket {
   background-color: var(--redOpaque);
@@ -32,7 +32,7 @@ body {
 .layout {
   background-color: white;
 }
-.pageTitleContainer {
+.home__pageTitleContainer {
   background-color: var(--orangeOpaque);
   height: 347px;
   display: flex;
@@ -42,16 +42,19 @@ body {
   width: 100vw;
   top: 65px;
 }
-.paginationContainer{
-    margin: 0px auto 50px auto;
+.home__paginationContainer {
+  margin: 0px auto 50px auto;
+  position: relative;
+  margin-top: 250px;
 }
-.ticketContainer {
+.home__ticketContainer {
   width: 605px;
 }
-.ticketParentContainer {
+.home__ticketParentContainer {
   display: flex;
   justify-content: center;
-  margin-top: 250px;
+  position: relative;
+  /* margin-top: 50px; */
   margin-bottom: 50px;
 }
 

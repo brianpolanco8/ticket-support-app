@@ -6,8 +6,10 @@ import { firestore } from "services/firebase";
 import { Category } from "utils";
 import { TicketType } from "utils/types/TicketType";
 import { CategoryLabel } from "../../components/CategoryLabel/CategoryLabel";
+import { TicketsTabs } from "components";
 
 import "./Home.css";
+import { getTicketByCategory } from "utils/helper-functions";
 
 const { Title, Paragraph } = Typography;
 
@@ -18,17 +20,27 @@ interface Props {
 
 export default function Home({ user, setUser }: Props) {
   const [tickets, setTickets] = useState<TicketType[]>([]);
-  
+  const [errorTickets, setErrorTickets] = useState<TicketType[]>([]);
+  const [newFeatureTickets, setNewFeatureTickets] = useState<TicketType[]>([]);
+  const [updateTickets, setUpdateTickets] = useState<TicketType[]>([]);
+
   useEffect(() => {
     let ticketsBuffer: any[] = [];
     firestore()
       .collection("tickets")
       .onSnapshot((collectionSnapshot) => {
-        collectionSnapshot.forEach((ticket) => ticketsBuffer.push(ticket.data()));
+        collectionSnapshot.forEach((ticket) =>
+          ticketsBuffer.push(ticket.data())
+        );
         setTickets(ticketsBuffer);
+        setErrorTickets(getTicketByCategory(ticketsBuffer, "Error"));
+        setNewFeatureTickets(
+          getTicketByCategory(ticketsBuffer, "Nueva característica")
+        );
+        setUpdateTickets(getTicketByCategory(ticketsBuffer, "Actualización"));
       });
   }, []);
-  
+
   const [page, setPage] = useState(1);
 
   function onPageChanged(page: number) {
@@ -47,30 +59,24 @@ export default function Home({ user, setUser }: Props) {
         </div>
       </div>
 
-      <div className="ticketParentContainer">
-        <div className="ticketContainer">
-          {tickets
-            .slice((page - 1) * 10, (page - 1) * 10 + 10)
-            .map((ticket) => (
-              <Card
-                title={ticket.name}
-                headStyle={{ fontWeight: "bold" }}
-                className="ticketCard"
-                hoverable
-                onClick={() => console.log(`Card pressed`)}
-                extra={<CategoryLabel category={ticket.category} />}
-              >
-                <Paragraph
-                  ellipsis={{ rows: 3, expandable: true, symbol: "more" }}
-                >
-                  {ticket.description}
-                </Paragraph>
-              </Card>
-            ))}
-        </div>
+      {/* TABS THAT RENDER TICKETS */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <TicketsTabs
+          allTicketsContent={renderTickets(tickets, page)}
+          errorTicketContent={renderTickets(errorTickets, page)}
+          updateTicketsContent={renderTickets(updateTickets, page)}
+          newFeatureTicketsContent={renderTickets(newFeatureTickets, page)}
+        />
       </div>
 
-      <div className="paginationContainer">
+      {/* PAGINATION */}
+      <div className="home__paginationContainer">
         <Pagination
           defaultPageSize={10}
           current={page}
@@ -82,3 +88,24 @@ export default function Home({ user, setUser }: Props) {
     </Layout>
   );
 }
+
+const renderTickets = (tickets: TicketType[], page: number) => (
+  <div className="home__ticketParentContainer">
+    <div className="home__ticketContainer">
+      {tickets.slice((page - 1) * 10, (page - 1) * 10 + 10).map((ticket) => (
+        <Card
+          title={ticket.name}
+          headStyle={{ fontWeight: "bold" }}
+          className="ticketCard"
+          hoverable
+          onClick={() => console.log(`Card pressed`)}
+          extra={<CategoryLabel category={ticket.category} />}
+        >
+          <Paragraph ellipsis={{ rows: 3, expandable: true, symbol: "more" }}>
+            {ticket.description}
+          </Paragraph>
+        </Card>
+      ))}
+    </div>
+  </div>
+);
