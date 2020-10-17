@@ -3,7 +3,7 @@ import { Navbar } from "components";
 
 import React, { useEffect, useState } from "react";
 import { Category } from "utils";
-import { TicketType } from "utils/types/TicketType";
+import { TicketType, TicketState } from "utils/types/TicketType";
 import { CategoryLabel } from "../../components/CategoryLabel/CategoryLabel";
 import { firestore } from "../../services/firebase";
 
@@ -65,6 +65,16 @@ export default function MyTickets({ user, setUser }: Props) {
                   ellipsis={{ rows: 3, expandable: true, symbol: "more" }}
                 >
                   {ticket.description}
+                </Paragraph>
+
+                <Paragraph
+                  className={
+                    ticket.state === "Completado"
+                      ? "ticket-state-completed"
+                      : "ticket-state-in-progress"
+                  }
+                >
+                  {ticket.state}
                 </Paragraph>
               </Card>
             ))}

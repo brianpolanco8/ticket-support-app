@@ -24,6 +24,7 @@ body {
   border-color: var(--orange);
   background-color: var(--orange);
 }
+
 .errorTicket {
   background-color: var(--redOpaque);
   color: var(--red);
@@ -31,6 +32,13 @@ body {
 
 .layout {
   background-color: white;
+}
+.home-client-name{
+  font-size: 14px;
+  color: #808080;
+  position: relative;
+  top: 15px;
+  text-align: end;
 }
 .home__pageTitleContainer {
   background-color: var(--orangeOpaque);

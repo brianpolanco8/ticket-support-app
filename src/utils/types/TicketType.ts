@@ -1,5 +1,6 @@
 import { type } from "os";
 import * as Category from "./TicketCategories";
+import { UserTicketType } from "./UserTicketType";
 
 export type TicketType = {
   name: string;
@@ -7,6 +8,7 @@ export type TicketType = {
   category: TicketCategory;
   completionDate?: Date;
   state?: TicketState;
+  client: UserTicketType;
 };
 
 export type TicketCategory =
@@ -14,7 +16,7 @@ export type TicketCategory =
   | Category.NewFeature
   | Category.Update;
 
-type TicketState = Completed | InProgress;
+export type TicketState = Completed | InProgress;
 
 export const Completed = "Completado";
 export type Completed = typeof Completed;

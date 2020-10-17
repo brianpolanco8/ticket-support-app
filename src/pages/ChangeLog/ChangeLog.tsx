@@ -22,6 +22,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -29,6 +34,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Praesent non elementum erat. Phasellus varius enim eget tellus accumsan facilisis. Donec id consequat dui, non elementum ex. Aliquam cursus diam et urna sodales rhoncus. Nullam varius maximus risus, ac mollis ex. ",
       category: Category.NewFeature,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -36,6 +46,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Quisque iaculis leo id malesuada interdum. Morbi in malesuada odio, eu bibendum arcu. Nunc sed massa vitae orci commodo hendrerit sed sed nibh.",
       category: Category.Error,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -43,6 +58,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -50,6 +70,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Aliquam vel quam dignissim elit fermentum gravida vitae ut nunc. Integer rhoncus sem ut leo mattis imperdiet.",
       category: Category.NewFeature,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -57,6 +82,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -64,6 +94,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -71,6 +106,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.NewFeature,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -78,6 +118,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.NewFeature,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -85,6 +130,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -92,6 +142,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
     {
       name: "Lorem ipsum dolor sit amet",
@@ -99,6 +154,11 @@ export default function ChangeLog({ user, setUser }: Props) {
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
       completionDate: new Date("October 12, 2020"),
+      client: {
+        displayName: "Jose Perez",
+        email: "jose@gmail.com",
+        id: "AlkdjadAl9",
+      },
     },
   ]);
 
@@ -143,12 +203,20 @@ export default function ChangeLog({ user, setUser }: Props) {
                 onClick={() => console.log(`Card pressed`)}
                 extra={<CategoryLabel category={ticket.category} />}
               >
-                <Paragraph ellipsis={{ rows: 2 }} className="ticketDescription">
+                <Paragraph ellipsis={{ rows: 2 }}>
                   {ticket.description}
                 </Paragraph>
-                <Paragraph className="ticketDate">
-                  {parseTicketDate(ticket)}
-                </Paragraph>
+                
+                <div className="ticket-bottom-text">
+                  <Paragraph className="ticketDate">
+                    {parseTicketDate(ticket)}
+                  </Paragraph>
+                  {ticket.client && (
+                    <Paragraph className="log-client-name">
+                      {ticket.client.displayName}
+                    </Paragraph>
+                  )}
+                </div>
               </Card>
             ))}
         </div>

@@ -65,3 +65,15 @@ body {
   color: #808080;
   height: 40px;
 }
+.ticket-state-completed{
+    position: relative;
+    top: 15px;
+    font-weight: bold;
+    color: rgb(7, 221, 0);
+}
+.ticket-state-in-progress{
+    position: relative;
+    top: 15px;
+    font-weight: bold;
+    color: rgb(228, 205, 1);
+}

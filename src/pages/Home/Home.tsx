@@ -104,6 +104,12 @@ const renderTickets = (tickets: TicketType[], page: number) => (
           <Paragraph ellipsis={{ rows: 3, expandable: true, symbol: "more" }}>
             {ticket.description}
           </Paragraph>
+          
+          {ticket.client && (
+            <Paragraph className="home-client-name">
+              {ticket.client.displayName}
+            </Paragraph>
+          )}
         </Card>
       ))}
     </div>
