@@ -67,28 +67,12 @@ export default function Home({ user, setUser }: Props) {
           justifyContent: "center",
         }}
       > */}
-      <div className="ticketParentContainer">
-        <div className="ticketContainer">
-          {tickets
-            .slice((page - 1) * 10, (page - 1) * 10 + 10)
-            .map((ticket) => (
-              <Card
-                title={ticket.name}
-                headStyle={{ fontWeight: "bold" }}
-                className="ticketCard"
-                hoverable
-                onClick={() => console.log(`Card pressed`)}
-                extra={<CategoryLabel category={ticket.category} />}
-              >
-                <Paragraph
-                  ellipsis={{ rows: 3, expandable: true, symbol: "more" }}
-                >
-                  {ticket.description}
-                </Paragraph>
-              </Card>
-            ))}
-        </div>
-      </div>
+      <TicketsTabs
+        allTicketsContent={renderTickets(tickets, page)}
+        errorTicketContent={renderTickets(errorTickets, page)}
+        updateTicketsContent={renderTickets(updateTickets, page)}
+        newFeatureTicketsContent={renderTickets(newFeatureTickets, page)}
+      />
       {/* </div> */}
 
       {/* PAGINATION */}
