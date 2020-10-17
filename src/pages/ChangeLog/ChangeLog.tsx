@@ -1,8 +1,9 @@
 import { Card, Layout, Pagination, Typography } from "antd";
 import { Navbar } from "components";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { firestore } from "services/firebase";
 import { Category } from "utils";
-import { TicketType } from "utils/types/TicketType";
+import { Completed, TicketType } from "utils/types/TicketType";
 import { CategoryLabel } from "../../components/CategoryLabel/CategoryLabel";
 
 import "./ChangeLog.css";
@@ -18,6 +19,7 @@ export default function ChangeLog({ user, setUser }: Props) {
   const [tickets, setTickets] = useState<TicketType[]>([
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
@@ -31,6 +33,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Praesent non elementum erat. Phasellus varius enim eget tellus accumsan facilisis. Donec id consequat dui, non elementum ex. Aliquam cursus diam et urna sodales rhoncus. Nullam varius maximus risus, ac mollis ex. ",
       category: Category.NewFeature,
@@ -44,6 +47,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Quisque iaculis leo id malesuada interdum. Morbi in malesuada odio, eu bibendum arcu. Nunc sed massa vitae orci commodo hendrerit sed sed nibh.",
       category: Category.Error,
@@ -57,6 +61,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
@@ -70,6 +75,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Aliquam vel quam dignissim elit fermentum gravida vitae ut nunc. Integer rhoncus sem ut leo mattis imperdiet.",
       category: Category.NewFeature,
@@ -83,6 +89,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
@@ -96,6 +103,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
@@ -109,6 +117,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.NewFeature,
@@ -122,6 +131,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.NewFeature,
@@ -135,6 +145,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
@@ -148,6 +159,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Error,
@@ -161,6 +173,7 @@ export default function ChangeLog({ user, setUser }: Props) {
     },
     {
       name: "Lorem ipsum dolor sit amet",
+      id: "1",
       description:
         "Nulla purus arcu, mattis sit amet tellus sed, placerat egestas velit.",
       category: Category.Update,
@@ -173,6 +186,19 @@ export default function ChangeLog({ user, setUser }: Props) {
       },
     },
   ]);
+
+  useEffect(() => {
+    let ticketsBuffer: any[] = [];
+    firestore()
+      .collection("tickets")
+      .where("state", "==", Completed)
+      .onSnapshot((collectionSnapshot) => {
+        collectionSnapshot.forEach((ticket) => {
+          ticketsBuffer.push({ ...ticket.data(), id: ticket.id });
+        });
+        setTickets(ticketsBuffer);
+      });
+  }, []);
 
   const [page, setPage] = useState(1);
 

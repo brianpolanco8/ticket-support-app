@@ -1,13 +1,19 @@
-import { Button, Card, Layout, Pagination, Tooltip, Typography } from "antd";
+import {
+  Button,
+  Card,
+  Layout,
+  message,
+  Pagination,
+  Tooltip,
+  Typography,
+} from "antd";
 import { Navbar } from "components";
 
 import React, { useEffect, useState } from "react";
 import { firestore } from "services/firebase";
-import { Category } from "utils";
-import { TicketType } from "utils/types/TicketType";
+import { Completed, InProgress, TicketType } from "utils/types/TicketType";
 import { CategoryLabel } from "../../components/CategoryLabel/CategoryLabel";
 import { TicketsTabs } from "components";
-import { CheckOutlined } from "@ant-design/icons";
 
 import "./Home.css";
 import { getTicketByCategory } from "utils/helper-functions";
@@ -29,10 +35,11 @@ export default function Home({ user, setUser }: Props) {
     let ticketsBuffer: any[] = [];
     firestore()
       .collection("tickets")
+      .where("state", "==", InProgress)
       .onSnapshot((collectionSnapshot) => {
-        collectionSnapshot.forEach((ticket) =>
-          ticketsBuffer.push(ticket.data())
-        );
+        collectionSnapshot.forEach((ticket) => {
+          ticketsBuffer.push({ ...ticket.data(), id: ticket.id });
+        });
         setTickets(ticketsBuffer);
         setErrorTickets(getTicketByCategory(ticketsBuffer, "Error"));
         setNewFeatureTickets(
@@ -46,6 +53,23 @@ export default function Home({ user, setUser }: Props) {
 
   function onPageChanged(page: number) {
     setPage(page);
+  }
+
+  function completeTicket(id: string) {
+    firestore()
+      .collection("tickets")
+      .doc(id)
+      .update({
+        state: Completed,
+        completionDate: Date.now(),
+      })
+      .then(() => {
+        message.success("Ticket completado");
+        window.location.reload();
+      })
+      .catch((reason) => {
+        console.log(`Error: ${reason}`);
+      });
   }
 
   const renderTickets = (tickets: TicketType[], page: number) => (
@@ -73,7 +97,10 @@ export default function Home({ user, setUser }: Props) {
                       placement="bottom"
                       overlayStyle={{ fontSize: "10px" }}
                     >
-                      <Button className="home-complete-button">
+                      <Button
+                        onClick={() => completeTicket(ticket.id)}
+                        className="home-complete-button"
+                      >
                         Completar ticket
                       </Button>
                     </Tooltip>

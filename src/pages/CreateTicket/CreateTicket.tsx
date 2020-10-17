@@ -85,7 +85,7 @@ export default function CreateTicket({ setUser, user }: Props) {
         history.push(Routes.MyTickets)
       })
       .catch((reason) => {
-        message.error("Hubo un error");
+        message.error("Ocurrió un error");
       });
   }
 

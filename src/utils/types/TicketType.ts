@@ -3,6 +3,7 @@ import * as Category from "./TicketCategories";
 import { UserTicketType } from "./UserTicketType";
 
 export type TicketType = {
+  id: string;
   name: string;
   description: string;
   category: TicketCategory;
