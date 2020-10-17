@@ -22,7 +22,7 @@ const TicketsTabs = ({
     <Tabs
       defaultActiveKey="1"
       onChange={callback}
-      style={{ top: "300px", position: "relative" }}
+      style={{ position: "relative", top: "250px" }}
     >
       <TabPane tab="Todos" key="1" style={{ color: "white" }}>
         {allTicketsContent}

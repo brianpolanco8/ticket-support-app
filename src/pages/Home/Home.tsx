@@ -60,23 +60,23 @@ export default function Home({ user, setUser }: Props) {
       </div>
 
       {/* TABS THAT RENDER TICKETS */}
-      {/* <div
+      <div
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
-      > */}
-      <TicketsTabs
-        allTicketsContent={renderTickets(tickets, page)}
-        errorTicketContent={renderTickets(errorTickets, page)}
-        updateTicketsContent={renderTickets(updateTickets, page)}
-        newFeatureTicketsContent={renderTickets(newFeatureTickets, page)}
-      />
-      {/* </div> */}
+      >
+        <TicketsTabs
+          allTicketsContent={renderTickets(tickets, page)}
+          errorTicketContent={renderTickets(errorTickets, page)}
+          updateTicketsContent={renderTickets(updateTickets, page)}
+          newFeatureTicketsContent={renderTickets(newFeatureTickets, page)}
+        />
+      </div>
 
       {/* PAGINATION */}
-      <div className="paginationContainer">
+      <div className="home__paginationContainer">
         <Pagination
           defaultPageSize={10}
           current={page}
@@ -90,8 +90,8 @@ export default function Home({ user, setUser }: Props) {
 }
 
 const renderTickets = (tickets: TicketType[], page: number) => (
-  <div className="ticketParentContainer">
-    <div className="ticketContainer">
+  <div className="home__ticketParentContainer">
+    <div className="home__ticketContainer">
       {tickets.slice((page - 1) * 10, (page - 1) * 10 + 10).map((ticket) => (
         <Card
           title={ticket.name}

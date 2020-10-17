@@ -32,7 +32,7 @@ body {
 .layout {
   background-color: white;
 }
-.pageTitleContainer {
+.home__pageTitleContainer {
   background-color: var(--orangeOpaque);
   height: 347px;
   display: flex;
@@ -42,16 +42,19 @@ body {
   width: 100vw;
   top: 65px;
 }
-.paginationContainer {
+.home__paginationContainer {
   margin: 0px auto 50px auto;
+  position: relative;
+  margin-top: 250px;
 }
-.ticketContainer {
+.home__ticketContainer {
   width: 605px;
 }
-.ticketParentContainer {
+.home__ticketParentContainer {
   display: flex;
   justify-content: center;
-  margin-top: 250px;
+  position: relative;
+  /* margin-top: 50px; */
   margin-bottom: 50px;
 }
 
