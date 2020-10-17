@@ -33,13 +33,17 @@ body {
 .layout {
   background-color: white;
 }
-.home-client-name{
+.home-client-name {
   font-size: 14px;
   color: #808080;
-  position: relative;
-  top: 15px;
-  text-align: end;
+  margin-left: auto;
 }
+div.ant-typography {
+  margin-bottom: 0px;
+}
+.home-complete-button {
+}
+
 .home__pageTitleContainer {
   background-color: var(--orangeOpaque);
   height: 347px;
@@ -62,10 +66,14 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  /* margin-top: 50px; */
   margin-bottom: 50px;
 }
-
+.home-ticket-bottom-text {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+  align-items: center;
+}
 .ticketCard {
   width: 600px;
   border-radius: 10px;

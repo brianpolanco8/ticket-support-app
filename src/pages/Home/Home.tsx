@@ -1,4 +1,4 @@
-import { Card, Layout, Pagination, Typography } from "antd";
+import { Button, Card, Layout, Pagination, Tooltip, Typography } from "antd";
 import { Navbar } from "components";
 
 import React, { useEffect, useState } from "react";
@@ -7,6 +7,7 @@ import { Category } from "utils";
 import { TicketType } from "utils/types/TicketType";
 import { CategoryLabel } from "../../components/CategoryLabel/CategoryLabel";
 import { TicketsTabs } from "components";
+import { CheckOutlined } from "@ant-design/icons";
 
 import "./Home.css";
 import { getTicketByCategory } from "utils/helper-functions";
@@ -46,6 +47,51 @@ export default function Home({ user, setUser }: Props) {
   function onPageChanged(page: number) {
     setPage(page);
   }
+
+  const renderTickets = (tickets: TicketType[], page: number) => (
+    <div className="home__ticketParentContainer">
+      <div className="home__ticketContainer">
+        {tickets.slice((page - 1) * 10, (page - 1) * 10 + 10).map((ticket) => (
+          <Card
+            title={ticket.name}
+            headStyle={{ fontWeight: "bold" }}
+            className="ticketCard"
+            hoverable
+            onClick={() => console.log(`Card pressed`)}
+            extra={<CategoryLabel category={ticket.category} />}
+          >
+            <Paragraph ellipsis={{ rows: 3, expandable: true, symbol: "more" }}>
+              {ticket.description}
+            </Paragraph>
+
+            <div className="home-ticket-bottom-text">
+              {user && (
+                <div>
+                  {user.userType === "admin" && (
+                    <Tooltip
+                      title="Marcar como completo"
+                      placement="bottom"
+                      overlayStyle={{ fontSize: "10px" }}
+                    >
+                      <Button className="home-complete-button">
+                        Completar ticket
+                      </Button>
+                    </Tooltip>
+                  )}
+                </div>
+              )}
+
+              {ticket.client && (
+                <Paragraph className="home-client-name">
+                  {ticket.client.displayName}
+                </Paragraph>
+              )}
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <Layout style={{ backgroundColor: "white" }}>
@@ -88,30 +134,3 @@ export default function Home({ user, setUser }: Props) {
     </Layout>
   );
 }
-
-const renderTickets = (tickets: TicketType[], page: number) => (
-  <div className="home__ticketParentContainer">
-    <div className="home__ticketContainer">
-      {tickets.slice((page - 1) * 10, (page - 1) * 10 + 10).map((ticket) => (
-        <Card
-          title={ticket.name}
-          headStyle={{ fontWeight: "bold" }}
-          className="ticketCard"
-          hoverable
-          onClick={() => console.log(`Card pressed`)}
-          extra={<CategoryLabel category={ticket.category} />}
-        >
-          <Paragraph ellipsis={{ rows: 3, expandable: true, symbol: "more" }}>
-            {ticket.description}
-          </Paragraph>
-          
-          {ticket.client && (
-            <Paragraph className="home-client-name">
-              {ticket.client.displayName}
-            </Paragraph>
-          )}
-        </Card>
-      ))}
-    </div>
-  </div>
-);

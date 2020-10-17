@@ -26,6 +26,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -38,6 +39,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -50,6 +52,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -62,6 +65,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -74,6 +78,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -86,6 +91,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -98,6 +104,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -110,6 +117,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -122,6 +130,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -134,6 +143,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -146,6 +156,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
     {
@@ -158,6 +169,7 @@ export default function ChangeLog({ user, setUser }: Props) {
         displayName: "Jose Perez",
         email: "jose@gmail.com",
         id: "AlkdjadAl9",
+        userType: "client",
       },
     },
   ]);

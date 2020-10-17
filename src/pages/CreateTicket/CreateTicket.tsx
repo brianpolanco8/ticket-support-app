@@ -62,6 +62,7 @@ export default function CreateTicket({ setUser, user }: Props) {
       displayName: user ? user.displayName : "",
       email: user ? user.email : "",
       id: user ? user.id : "",
+      userType: user ?  user.userType : "",
     },
   });
 
