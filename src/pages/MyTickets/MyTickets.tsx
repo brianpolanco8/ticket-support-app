@@ -1,8 +1,9 @@
-import { Card, Layout, Pagination, Typography } from "antd";
+import { Button, Card, Layout, Pagination, Typography } from "antd";
 import { Navbar } from "components";
 
 import React, { useEffect, useState } from "react";
-import { Category } from "utils";
+import { useHistory } from "react-router-dom";
+import { Category, Routes } from "utils";
 import { TicketType, TicketState } from "utils/types/TicketType";
 import { CategoryLabel } from "../../components/CategoryLabel/CategoryLabel";
 import { firestore } from "../../services/firebase";
@@ -18,6 +19,8 @@ interface Props {
 
 export default function MyTickets({ user, setUser }: Props) {
   const [tickets, setTickets] = useState<TicketType[]>([]);
+
+  const history = useHistory();
 
   useEffect(() => {
     let userTickets: any[] = [];
@@ -42,9 +45,24 @@ export default function MyTickets({ user, setUser }: Props) {
       <div className="pageTitleContainer">
         <div>
           <Title style={{ textAlign: "center" }}>Mis tickets</Title>
-          <Title level={4} style={{ fontWeight: "normal" }}>
-            Tickets creados
-          </Title>
+          {tickets.length === 0 && user ? (
+            <div className="no-ticket-container">
+              <Title level={4} style={{ fontWeight: "normal" }}>
+                Actualmente no tienes ningún ticket creado.
+              </Title>
+
+              <Button
+                className="create-ticket-button"
+                onClick={() => history.push(Routes.CreateTicket)}
+              >
+                Crear ticket
+              </Button>
+            </div>
+          ) : (
+            <Title level={4} style={{ fontWeight: "normal" }}>
+              Tickets creados
+            </Title>
+          )}
         </div>
       </div>
 
@@ -81,7 +99,7 @@ export default function MyTickets({ user, setUser }: Props) {
         </div>
       </div>
 
-      {user && (
+      {user && tickets.length > 0 && (
         <div className="paginationContainer">
           <Pagination
             defaultPageSize={10}

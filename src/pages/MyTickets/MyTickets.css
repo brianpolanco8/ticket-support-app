@@ -24,6 +24,12 @@ body {
   border-color: var(--orange);
   background-color: var(--orange);
 }
+.create-ticket-button {
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px var(--orange);
+  margin: auto;
+  color: var(--orange);
+}
 .errorTicket {
   background-color: var(--redOpaque);
   color: var(--red);
@@ -31,6 +37,11 @@ body {
 
 .layout {
   background-color: white;
+}
+.no-ticket-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .pageTitleContainer {
   background-color: var(--orangeOpaque);
@@ -65,15 +76,15 @@ body {
   color: #808080;
   height: 40px;
 }
-.ticket-state-completed{
-    position: relative;
-    top: 15px;
-    font-weight: bold;
-    color: rgb(7, 221, 0);
+.ticket-state-completed {
+  position: relative;
+  top: 15px;
+  font-weight: bold;
+  color: rgb(7, 221, 0);
 }
-.ticket-state-in-progress{
-    position: relative;
-    top: 15px;
-    font-weight: bold;
-    color: rgb(218, 218, 5);
+.ticket-state-in-progress {
+  position: relative;
+  top: 15px;
+  font-weight: bold;
+  color: rgb(218, 218, 5);
 }
