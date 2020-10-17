@@ -1,0 +1,86 @@
+.formTextContainer {
+  position: absolute;
+  width: 1440px;
+  height: 347px;
+  left: -11px;
+  top: 181px;
+}
+
+.titleContainer {
+  position: absolute;
+  left: 11.5%;
+  right: 22.08%;
+  top: 19.88%;
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  display: flex;
+  align-items: flex-start;
+
+  color: #000000;
+}
+
+.descriptionContainer {
+  position: absolute;
+  left: 11.74%;
+  right: 54.72%;
+  bottom: 23.05%;
+
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  /* or 100% */
+  display: flex;
+  align-items: center;
+  color: #000000;
+}
+
+.iconContainer {
+  position: absolute;
+  left: 11.8%;
+  top: 10%;
+  font-size: 37px;
+}
+
+.formContainer {
+  position: absolute;
+  left: -194.72%;
+  right: -3.61%;
+  top: 5.48%;
+  bottom: -1058.5%;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 50px;
+}
+
+.nameTextContainer {
+  position: absolute;
+  left: 61.25%;
+  right: 25.14%;
+  top: 13.26%;
+  bottom: 70.03%;
+
+  font-family: Century Gothic;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  /* or 100% */
+
+  display: flex;
+  align-items: center;
+
+  color: #000000;
+}
+
+.nameFormContainer {
+  position: absolute;
+  left: 61.25%;
+  right: 0.35%;
+  top: 31.7%;
+  bottom: 57.06%;
+}
