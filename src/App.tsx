@@ -2,13 +2,20 @@ import { Routes } from "./utils";
 import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { SignUp, SignIn, Home, ChangeLog, CreateTicket, MyTickets } from "pages";
+import {
+  SignUp,
+  SignIn,
+  Home,
+  ChangeLog,
+  CreateTicket,
+  MyTickets,
+} from "pages";
 
 const App = () => {
   const [user, setUser] = useState<firebase.firestore.DocumentData>();
 
   return (
-    <Router>
+    <Router basename={"ticket-support-app"}>
       <Switch>
         <Route
           exact
