@@ -38,13 +38,17 @@ const SignUp = ({ user, setUser }: Props) => {
 
       //SET DISPLAY NAME
       auth().currentUser?.updateProfile({
-        displayName: `${capitalize(values.firstname)} ${capitalize(values.lastname)}`,
+        displayName: `${capitalize(values.firstname)} ${capitalize(
+          values.lastname
+        )}`,
       });
 
       // CREATE USER DOCUMENT
       await generateUserDocument(response.user, { ...values });
 
-      setUser({ ...response.user, ...values });
+      console.log(response);
+
+      setUser({ ...response.user, ...values, id: response.user?.uid });
 
       history.push("/");
     } catch (error) {
