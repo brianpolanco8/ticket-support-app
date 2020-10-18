@@ -15,10 +15,10 @@ const App = () => {
   const [user, setUser] = useState<firebase.firestore.DocumentData>();
 
   return (
-    <Router>
+    <Router basename={"ticket-support-app"}>
       <Switch>
         <Route
-          // exact
+          exact
           path={Routes.Home}
           render={(props) => <Home user={user} setUser={setUser} />}
         />
