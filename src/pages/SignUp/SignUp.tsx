@@ -27,14 +27,12 @@ const SignUp = ({ user, setUser }: Props) => {
     password: string;
     userType: string;
   }) => {
-    console.log(values);
     try {
       //CREATE USER
       let response = await auth().createUserWithEmailAndPassword(
         values.email.trim(),
         values.password
       );
-      console.log("response", response);
 
       //SET DISPLAY NAME
       auth().currentUser?.updateProfile({
@@ -45,8 +43,6 @@ const SignUp = ({ user, setUser }: Props) => {
 
       // CREATE USER DOCUMENT
       await generateUserDocument(response.user, { ...values });
-
-      console.log(response);
 
       setUser({ ...response.user, ...values, id: response.user?.uid });
 
