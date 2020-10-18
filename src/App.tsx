@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes } from "./utils";
+import React, { useState } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { SignUp, SignIn, Home, ChangeLog, CreateTicket, MyTickets } from "pages";
 
-function App() {
+const App = () => {
+  const [user, setUser] = useState<firebase.firestore.DocumentData>();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route
+          exact
+          path={Routes.Home}
+          render={(props) => <Home user={user} setUser={setUser} />}
+        />
+        <Route
+          exact
+          path={Routes.SignIn}
+          render={(props) => (
+            <SignIn user={user} setUser={setUser} {...props} />
+          )}
+        />
+        <Route
+          exact
+          path={Routes.SignUp}
+          render={(props) => (
+            <SignUp user={user} setUser={setUser} {...props} />
+          )}
+        />
+        <Route
+          exact
+          path={Routes.ChangeLog}
+          render={(props) => (
+            <ChangeLog user={user} setUser={setUser} {...props} />
+          )}
+        />
+        <Route
+          exact
+          path={Routes.CreateTicket}
+          render={(props) => (
+            <CreateTicket user={user} setUser={setUser} {...props} />
+          )}
+        />
+        <Route
+          exact
+          path={Routes.MyTickets}
+          render={(props) => (
+            <MyTickets user={user} setUser={setUser} {...props} />
+          )}
+        />
+      </Switch>
+    </Router>
   );
-}
+};
 
 export default App;

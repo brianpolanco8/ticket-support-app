@@ -1,0 +1,37 @@
+.signIn__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signInForm__input {
+  background-color: rgba(130, 130, 130, 0.3);
+  margin-bottom: 10px;
+  width: 424px;
+  height: 40px;
+}
+
+.signIn__button {
+  background-color: var(--orangeOpaque);
+  color: white;
+  border-radius: 5px;
+  width: 424px;
+  height: 40px;
+}
+.signIn__button:hover {
+  color: white;
+  border-color: var(--orange);
+  background-color: var(--orange);
+}
+.signIn__button:focus {
+  color: white;
+  border-color: var(--orange);
+  background-color: var(--orange);
+}
+
+.signInForm__input:focus {
+  color: white;
+  border-color: var(--orange);
+  background-color: var(--orange);
+}
