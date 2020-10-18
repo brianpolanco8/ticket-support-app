@@ -20,6 +20,8 @@ interface Props {
 export default function MyTickets({ user, setUser }: Props) {
   const [tickets, setTickets] = useState<TicketType[]>([]);
 
+  console.log("user", user);
+
   const history = useHistory();
 
   useEffect(() => {
