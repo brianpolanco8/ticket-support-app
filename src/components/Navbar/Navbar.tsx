@@ -63,13 +63,6 @@ export function Navbar({ setUser, user }: Props) {
             </Menu.Item>
           </SubMenu>
           
-          <Menu.Item
-            onClick={() => handleOnClick(Routes.Support)}
-            key="support"
-          >
-            Soporte
-          </Menu.Item>
-
           {user ? (
             <>
               <Menu.Item
